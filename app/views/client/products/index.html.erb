@@ -1,5 +1,5 @@
 <% @animals.each do |animal| %>
-  <h2><%= animal["name"] %></h2>
+  <h2><a href="/client/animals/<%= animal["id"] %>"><%= animal["name"] %></a></h2> 
   <h3> Price: <%= animal["price"] %></h3>
   <h4> Description: <%= animal["description"] %></h4>
   <h4> Image: <%= animal["image_url"] %></h4>

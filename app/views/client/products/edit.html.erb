@@ -1,0 +1,19 @@
+<%= form_tag "/client/animals/#{ @animal['id'] }", method: :patch do %>
+  <div>
+    Name: <input type="text" name="name" value="<%= @animal['name'] %>">
+  </div>
+  
+  <div>
+    Price: <input type="text" name="price" value="<%= @animal['price'] %>">
+  </div>
+
+  <div>
+    Description: <input type="text" name="description" value="<%= @animal['description'] %>">
+  </div>
+
+  <div>
+    Image URL: <input type="text" name="image_url" value="<%= @animal['image_url'] %>">
+  </div>
+  
+  <input type="submit" value="Update animal">
+<% end %>

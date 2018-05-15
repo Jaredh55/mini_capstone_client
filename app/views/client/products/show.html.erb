@@ -1,0 +1,7 @@
+  <h2><%= @animal["name"] %></h2>
+  <h3> Price: <%= @animal["price"] %></h3>
+  <h4> Description: <%= @animal["description"] %></h4>
+  <img src="<% @animal['image_url'] %>" alt="">
+
+    <a href="/client/animals/<%= @animal['id'] %>/edit">Edit</a>
+    <a href="/client/animals/<%= @animal['id'] %>" data-method="delete">Delete</a>
