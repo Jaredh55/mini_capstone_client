@@ -19,7 +19,11 @@ class Client::ProductsController < ApplicationController
     response = Unirest.post(
                             "http://localhost:3000/api/animals", parameters: client_params
                             )
-    render 'create.html.erb'
+    # render 'create.html.erb'
+    flash[:success] = "Successfully created product"
+    product = response.body
+    redirect_to "/client/animals/#{product["id"]}"
+
   end
 
   def show
@@ -47,12 +51,17 @@ class Client::ProductsController < ApplicationController
                              "http://localhost:3000/api/animals/#{ params[:id] }",
                              parameters: client_params
                             )
-        render 'update.html.erb'
+        # render 'update.html.erb'
+      flash[:success] = "Successfully updated product"
+      product = response.body
+      redirect_to "/client/animals/#{product["id"]}"
   end
 
     def destroy
     animal_id = params[:id]
     response = Unirest.delete("http://localhost:3000/api/animals/#{ animal_id }")
-    render 'destroy.html.erb'
+    # render 'destroy.html.erb'
+    flash[:success] = "Successfully deleted product"
+    redirect_to "/client/animals"
   end
 end
