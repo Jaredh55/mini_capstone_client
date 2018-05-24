@@ -1,7 +1,10 @@
   <h2><%= @animal["name"] %></h2>
-  <h3> Price: <%= @animal["price"] %></h3>
+  <h3> Price: <%= @animal["formatted"]["price"] %></h3>
   <h4> Description: <%= @animal["description"] %></h4>
-  <img src="<% @animal['image_url'] %>" alt="">
+  <h4> Tax: <%= @animal["formatted"]["tax"] %></h4>
+  <h4> Total: <%= @animal["formatted"]["total"] %></h4>
+  <h4> Supplier: <%= @animal["supplier"]["name"] %></h4>
+  <img src="<%= @animal['image_url'] %>">
 
     <a href="/client/animals/<%= @animal['id'] %>/edit">Edit</a>
     <a href="/client/animals/<%= @animal['id'] %>" data-method="delete">Delete</a>

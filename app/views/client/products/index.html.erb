@@ -1,8 +1,33 @@
+<%= form_tag "/client/animals", method: :get do %>
+  <input type="text" name="search" placeholder="Search Term">
+  <input type="submit" value="Go!">
+<% end %>
+
+<ul>
+  <li>
+    Sort By
+    <ul>
+      <li> <a href="/client/animals?sort_by=price"> Price - Low to High </a> </li>
+      <li> <a href="/client/animals?sort_by=price&&sort_order=desc"> Price - High to Low </a> </li>
+
+      <li> <a href="/client/animals?sort_by=name"> Name A-Z </a> </li>
+
+      <li> <a href="/client/animals?sort_by=name&&sort_order=desc"> Name Z-A </a> </li>
+    </ul>
+  </li>
+</ul>
+
 <% @animals.each do |animal| %>
   <h2><a href="/client/animals/<%= animal["id"] %>"><%= animal["name"] %></a></h2> 
-  <h3> Price: <%= animal["price"] %></h3>
+  <% if animal["discount"] %>
+    <h3> Discount Item! </h3>
+  <% end %>
+  <h3> Price: <%= animal["formatted"]["price"] %></h3>
   <h4> Description: <%= animal["description"] %></h4>
-  <h4> Image: <%= animal["image_url"] %></h4>
+  <h4> Image:  </h4>
+  <img src="<%= animal['image_url']%>">
+  <h4> Supplier: <%= animal["supplier"]["name"] %></h4>
+
   <br/>
 
 <% end %>

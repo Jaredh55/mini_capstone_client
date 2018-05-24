@@ -1,6 +1,11 @@
 class Client::ProductsController < ApplicationController
   def index
-    response = Unirest.get("http://localhost:3000/api/animals")
+    client_params = {
+                      search: params[:search],
+                      sort_by: params[:sort_by],
+                      sort_order: params[:sort_order]
+                      }
+    response = Unirest.get("http://localhost:3000/api/animals", parameters: client_params) #get does not send body params, using body params as syntax, gets sent as string query params
     @animals = response.body
     render 'index.html.erb'
   end
@@ -14,7 +19,9 @@ class Client::ProductsController < ApplicationController
                         name: params[:name],
                         price: params[:price],
                         description: params[:description],
-                        image_url: params[:image_url]
+                        image_url: params[:image_url],
+                        supplier_id: params[:supplier_id]
+
                       }
     response = Unirest.post(
                             "http://localhost:3000/api/animals", parameters: client_params
@@ -45,7 +52,9 @@ class Client::ProductsController < ApplicationController
                           name: params[:name],
                           price: params[:price],
                           description: params[:description],
-                          image_url: params[:image_url]
+                          image_url: params[:image_url],
+                          supplier_id: params[:supplier_id]
+                          
                       }
      response = Unirest.patch(
                              "http://localhost:3000/api/animals/#{ params[:id] }",
