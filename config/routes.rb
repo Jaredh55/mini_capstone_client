@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  get '/' => 'client/animals#action'
+  get '/' => 'client/products#index'
+
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
+
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
+
+
   namespace :client do
     get '/animals' => 'products#index'
     get '/animals/new' => 'products#new'

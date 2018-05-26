@@ -1,10 +1,23 @@
-  <h2><%= @animal["name"] %></h2>
-  <h3> Price: <%= @animal["formatted"]["price"] %></h3>
-  <h4> Description: <%= @animal["description"] %></h4>
-  <h4> Tax: <%= @animal["formatted"]["tax"] %></h4>
-  <h4> Total: <%= @animal["formatted"]["total"] %></h4>
-  <h4> Supplier: <%= @animal["supplier"]["name"] %></h4>
-  <img src="<%= @animal['image_url'] %>">
+<h2><%= @animal["name"] %></h2>
+<h4>Price: <%= @animal["formatted"]["price"] %></h4>
+<h4>Tax: <%= @animal["formatted"]["tax"] %></h4>
+<h4>Total: <%= @animal["formatted"]["total"] %></h4>
+<h4>Description: <%= @animal["description"] %></h4>
+<!-- <img src="<%= @animal['image_url']%>"> -->
 
-    <a href="/client/animals/<%= @animal['id'] %>/edit">Edit</a>
-    <a href="/client/animals/<%= @animal['id'] %>" data-method="delete">Delete</a>
+<!--   <% @animal["images"].each do |image| %>
+  <img src="<%= image["url"] %>">
+  <% end %>
+
+  <a href="/client/animals/<%= @animal['id'] %>/edit">Edit</a>
+  <a href="/client/animals/<%= @animal['id'] %>" data-method="delete">Delete</a> -->
+
+<% @animal["images"].each do |image| %>
+  <img src="<%=image['image_url']%>" alt="<%=image['alt']%>">
+<% end %>
+
+<h6>Supplier: <%= @animal["supplier"]["name"] %></h6>
+
+
+<a href="/client/animals/<%= @animal['id'] %>/edit">Edit</a>
+<a href="/client/animals/<%= @animal['id'] %>" data-method="delete">Delete</a>

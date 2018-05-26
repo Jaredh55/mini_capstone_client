@@ -24,8 +24,11 @@
   <% end %>
   <h3> Price: <%= animal["formatted"]["price"] %></h3>
   <h4> Description: <%= animal["description"] %></h4>
-  <h4> Image:  </h4>
-  <img src="<%= animal['image_url']%>">
+  <h4> Images:  </h4>
+<!--   <img src="<%= animal['image_url']%>"> -->
+<% animal["images"].each do |image| %>
+  <img src="<%=image['image_url']%>" alt="<%=image['alt']%>">
+<% end %>
   <h4> Supplier: <%= animal["supplier"]["name"] %></h4>
 
   <br/>
